@@ -1,1 +1,5 @@
-This is a template made from [ikeryou](https://twitter.com/ikeryou)'s github project.
+### Box grid and wave effect
+
+![ss1](https://github.com/latteouka/three-wave/blob/main/public/ss1.png)
+
+https://www.youtube.com/watch?v=JaXb-hH2BIg
