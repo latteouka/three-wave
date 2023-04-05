@@ -57,47 +57,6 @@ export class MousePointer {
     return this._instance;
   }
 
-  private _eTouchStart(e: any = {}): void {
-    this.isDown = true;
-    this._eTouchMove(e);
-
-    const p: Point = this._getTouchPoint(e);
-    this.start.x = p.x;
-    this.start.y = p.y;
-  }
-
-  private _eTouchEnd(): void {
-    this.isDown = false;
-
-    // 上下スワイプ判定
-    const dx = this.old.x - this.x;
-    const dy = this.old.y - this.y;
-    // console.log(Math.abs(dy))
-    if (Math.abs(dy) > 0 || Math.abs(dx) > 0) {
-      if (this.onSwipe != undefined) this.onSwipe({ move: dy });
-    }
-
-    this.dist = 0;
-    // console.log(dy)
-    // Param.instance.setMemo(dx + ',' + dy)
-  }
-
-  private _eTouchMove(e: any = {}): void {
-    const p: Point = this._getTouchPoint(e);
-    this.old.x = this.x;
-    this.old.y = this.y;
-    this.x = p.x;
-    this.y = p.y;
-
-    const dx = this.old.x - this.x;
-    const dy = this.old.y - this.y;
-    this.dist = Math.sqrt(dx * dx + dy * dy);
-
-    if (this.usePreventDefault) {
-      e.preventDefault();
-    }
-  }
-
   private _eDown(e: any = {}): void {
     this.isDown = true;
     this._eMove(e);
@@ -120,16 +79,6 @@ export class MousePointer {
     const dx = this.old.x - this.x;
     const dy = this.old.y - this.y;
     this.dist = Math.sqrt(dx * dx + dy * dy);
-  }
-
-  private _getTouchPoint(e: TouchEvent): Point {
-    const p = new Point();
-    const touches: TouchList = e.touches;
-    if (touches != null && touches.length > 0) {
-      p.x = touches[0].pageX;
-      p.y = touches[0].pageY;
-    }
-    return p;
   }
 
   private _update(): void {

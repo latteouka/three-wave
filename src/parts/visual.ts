@@ -2,7 +2,6 @@ import { Func } from "../core/func";
 import { Canvas } from "../webgl/canvas";
 import { Object3D } from "three/src/core/Object3D";
 import { Update } from "../libs/update";
-import { Item } from "./Item";
 import { Box } from "./Box";
 
 export class Visual extends Canvas {
@@ -14,7 +13,6 @@ export class Visual extends Canvas {
     this._con = new Object3D();
     this.mainScene.add(this._con);
 
-    const item = new Item();
     const box = new Box();
 
     this._con.add(box);
